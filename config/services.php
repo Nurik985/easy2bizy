@@ -34,5 +34,9 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+	'yclients' => [
+		'base_url' => env('YCLIENTS_API_ENDPOINT', 'https://api.yclients.com/api/v1'), // Пример URL
+		'partner_token' => env('YCLIENTS_PARTNER_TOKEN'),
+	],
 
 ];

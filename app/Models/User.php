@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo; // Добавляем для отношения
 
 class User extends Authenticatable
 {
@@ -18,9 +19,14 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+	    'name',
+	    'email',
+	    'password',
+	    'login', // Добавляем
+	    'yclients_user_token', // Добавляем
+	    'yclients_company_id', // Добавляем
+	    'phone', // Добавляем
+	    'company_id',
     ];
 
     /**
@@ -31,6 +37,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+	    'yclients_user_token', // Можно скрыть токен пользователя
     ];
 
     /**
@@ -41,8 +48,17 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+	        'email_verified_at' => 'datetime',
+	        // Убедитесь, что 'password' может быть null, если вы не используете его для авторизации через Laravel Guard
+	        'password' => 'hashed', // Если пользователи также могут логиниться по email/password, оставьте. Иначе подумайте.
         ];
     }
+
+	/**
+	 * Получить компанию, к которой принадлежит пользователь.
+	 */
+	public function company(): BelongsTo
+	{
+		return $this->belongsTo(Company::class);
+	}
 }

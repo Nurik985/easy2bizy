@@ -6,5 +6,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['guest'])->group(function () {
 	Route::get('/', [UserController::class, 'login'])->name('login');
-	Route::post('/', [UserController::class, 'loginAuth'])->name('login.auth');
+	//Route::post('/', [UserController::class, 'loginAuth'])->name('login.auth');
 });
