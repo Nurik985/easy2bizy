@@ -26,6 +26,7 @@ class User extends Authenticatable
 	    'login', // Добавляем
 	    'user_token', // Добавляем
 	    'phone', // Добавляем
+	    'avatar',
     ];
 
     /**

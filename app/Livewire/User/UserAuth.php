@@ -78,6 +78,7 @@ class UserAuth extends Component
                     'name' => $authData['name'] ?? null,
                     'phone' => $authData['phone'] ?? null,
                     'email' => $authData['email'] ?? null,
+					'avatar' => $authData['avatar'] ?? null,
                     'password' => \Illuminate\Support\Str::random(10),
                 ]
             );
@@ -122,7 +123,7 @@ class UserAuth extends Component
 
             session()->flash('success', 'Вы успешно вошли в систему: ' . $currentCompanyName);
 
-            return redirect()->intended('/dashboard');
+            return redirect()->route('campaigns');
 
         } catch (\Illuminate\Validation\ValidationException $e) {
             // Ловим исключение валидации от Livewire
