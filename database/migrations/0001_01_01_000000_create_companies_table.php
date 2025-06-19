@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name')->default('');
             $table->timestamps();
+
+            $table->unsignedBigInteger('yclients_id')->unique();
         });
     }
 

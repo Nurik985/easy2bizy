@@ -1,5 +1,6 @@
 <?php
 
+$default = 'https://api.yclients.com/api/v1';
 return [
 
     /*
@@ -36,7 +37,8 @@ return [
     ],
 	'yclients' => [
 		'base_url' => env('YCLIENTS_API_ENDPOINT', 'https://api.yclients.com/api/v1'), // Пример URL
-		'partner_token' => env('YCLIENTS_PARTNER_TOKEN'),
+		'partner_token' => env('YCLIENTS_PARTNER_TOKEN', 'mrwssf4z5fbygmmypt8t'),
+		'company_name' => env('YCLIENTS_COMPANY_NAME', 'Золотая пилка'),
 	],
 
 ];

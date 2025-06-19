@@ -5,6 +5,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['guest'])->group(function () {
-	Route::get('/', [UserController::class, 'login'])->name('login');
-	//Route::post('/', [UserController::class, 'loginAuth'])->name('login.auth');
+	Route::get('/', [UserController::class, 'showLoginForm'])->name('login');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('dashboard', function (){
+        return view('admin.index');
+    })->name('dashboard');
 });

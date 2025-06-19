@@ -29,8 +29,8 @@ class Company extends Model
 	 * @var array<int, string>
 	 */
 	protected $fillable = [
-		'id',   // Включаем 'id', если вы планируете устанавливать его вручную из YClients
-		'name',
+		'name',   // Включаем 'id', если вы планируете устанавливать его вручную из YClients
+		'yclients_id',
 	];
 
 	/**

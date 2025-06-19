@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo; // Добавляем для отношения
@@ -21,12 +22,10 @@ class User extends Authenticatable
     protected $fillable = [
 	    'name',
 	    'email',
-	    'password',
+	    //'password',
 	    'login', // Добавляем
-	    'yclients_user_token', // Добавляем
-	    'yclients_company_id', // Добавляем
+	    'user_token', // Добавляем
 	    'phone', // Добавляем
-	    'company_id',
     ];
 
     /**
@@ -37,7 +36,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-	    'yclients_user_token', // Можно скрыть токен пользователя
+	    'user_token', // Можно скрыть токен пользователя
     ];
 
     /**
@@ -57,8 +56,8 @@ class User extends Authenticatable
 	/**
 	 * Получить компанию, к которой принадлежит пользователь.
 	 */
-	public function company(): BelongsTo
-	{
-		return $this->belongsTo(Company::class);
-	}
+    public function companies(): BelongsToMany // Изменяем тип отношения
+    {
+        return $this->belongsToMany(Company::class, 'company_user'); // Указываем имя pivot-таблицы
+    }
 }

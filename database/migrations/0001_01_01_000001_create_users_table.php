@@ -14,19 +14,17 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('company_id');
-            $table->string('login');
-            $table->string('user_token');
+            //$table->unsignedBigInteger('company_id');
+            $table->string('login')->unique();
+            $table->string('user_token')->nullable();
             $table->string('name');
             $table->string('phone')->nullable();
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
 
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
-
-            $table->unique(['login', 'user_token']);
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

@@ -43,7 +43,7 @@ return [
      *
      * Supported: true | false
      */
-    'replace' => false,
+    'replace' => true,
 
     /**
      * Prevent the display of duplicate toast messages.
