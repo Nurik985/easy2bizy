@@ -1,4 +1,6 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -7,4 +9,9 @@
 
 @theme {
     --font-sans: 'Roboto', sans-serif;
+}
+
+div#back-div {
+    max-width: 65%;
+    margin: 0 auto;
 }
